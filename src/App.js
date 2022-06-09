@@ -7,11 +7,11 @@ function App() {
   const [dog , setDog] = React.useState({});
 
 const handleSubmit = async() => { 
-  const dog = "https://dog.ceo/api/breeds/image/random"
-  let res = await fetch(dog);
+  const API = "https://dog.ceo/api/breeds/image/random"
+  let res = await fetch(API);
   let json = await res.json();
-  setDog(json.data)
-};
+  console.log(json)
+  setDog(json.message)};
 
 
 
