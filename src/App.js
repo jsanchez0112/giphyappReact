@@ -1,17 +1,16 @@
 import React, {useState} from "react"
 import Button from "./components/button"
-import Dogs from "./components/dog"
-import './App.css';
+import Dog from "./components/dog"
 
-function App() {
-  const [dog , setDog] = React.useState({});
+export default function App() {
+  const [dog , setDog] = useState({});
 
 const handleSubmit = async() => { 
   const API = "https://dog.ceo/api/breeds/image/random"
   let res = await fetch(API);
   let json = await res.json();
   console.log(json)
-  setDog(json.message)};
+  setDog(json)};
 
 
 
@@ -19,9 +18,9 @@ const handleSubmit = async() => {
     <div className="App">
       <h1>Get a random dog picture!</h1>
       <Button handleSubmitFromApp={handleSubmit} />
-      {dog.message ? <Dogs dog={dog} /> :<h2>test</h2> }
+      {dog.message ? 
+      <Dog dog={dog} /> : <h2>Get it!</h2> }
 
     </div>
   )}
 
-export default App;
